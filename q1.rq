@@ -1,6 +1,7 @@
 #+ summary: Select all art periods
 #+ description: Select all art periods, assigned to artworks or not
 #+ endpoint: https://api.data.netwerkdigitaalerfgoed.nl/datasets/heritageflix/v1/services/v1/sparql
+#+ endpoint_in_url: False
 #+ tags:
 #+   - Art Periods
 

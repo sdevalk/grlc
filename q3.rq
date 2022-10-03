@@ -1,6 +1,7 @@
 #+ summary: Select the details of a specific heritage object
 #+ description: Select the details of a specific heritage object
 #+ endpoint: https://api.data.netwerkdigitaalerfgoed.nl/datasets/heritageflix/v1/services/v1/sparql
+#+ endpoint_in_url: False
 #+ tags:
 #+   - Heritage Objects
 #+ defaults:

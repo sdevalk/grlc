@@ -1,13 +1,30 @@
-#+ pagination: 5
+#+ summary: Select all heritage object belonging to a specific art period
+#+ description: Select all heritage object belonging to a specific art period
+#+ endpoint: https://api.data.netwerkdigitaalerfgoed.nl/datasets/heritageflix/v1/services/v1/sparql
+#+ endpoint_in_url: False
+#+ tags:
+#+   - Heritage Objects
+#+ defaults:
+#+   - artPeriod: http://vocab.getty.edu/aat/300021147
+#+ pagination: 50
 
-PREFIX dbo: <http://dbpedia.org/ontology/>
-PREFIX dbp: <http://dbpedia.org/property/>
-PREFIX schema: <http://schema.org/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX schema: <https://schema.org/>
 
-SELECT ?band ?album ?genre WHERE {
-  ?band rdf:type dbo:Band .
-  ?album rdf:type schema:MusicAlbum .
-  ?band dbo:genre ?genre .
-  ?album dbp:artist ?band .
-} LIMIT 100
+SELECT *
+WHERE {
+  {
+    SELECT *
+    WHERE {
+      ?heritageObject a schema:VisualArtwork ;
+        schema:name ?name ;
+        schema:dateCreated ?dateCreated ;
+        schema:image/schema:contentUrl ?imageContentUrl ;
+        schema:image/schema:encodingFormat ?imageEncodingFormat ;
+        schema:image/schema:license ?imageLicense ; # TBD: also add name of the license?
+        schema:creator/schema:name ?creatorName ;
+        schema:temporalCoverage ?_artPeriod_iri .
+    }
+    ORDER BY ?dateCreated
+  }
+}
+LIMIT 10000

@@ -4,32 +4,32 @@
 #+ tags:
 #+   - Heritage Objects
 #+ defaults:
-#+   - genre: http://hdl.handle.net/10934/RM0001.COLLECT.10005
+#+   - heritageObject: http://hdl.handle.net/10934/RM0001.COLLECT.10005
 
 PREFIX schema: <https://schema.org/>
 
 SELECT *
 WHERE {
-  ?_genre_iri a schema:VisualArtwork ;
+  ?_heritageObject_iri a schema:VisualArtwork ;
     schema:name ?name ;
     schema:description ?description ;
     schema:dateCreated ?dateCreated ;
-  OPTIONAL { ?_genre_iri schema:mainEntityOfPage ?webpage }
+  OPTIONAL { ?_heritageObject_iri schema:mainEntityOfPage ?webpage }
 
   # Art period
-  ?_genre_iri schema:temporalCoverage/schema:name ?artPeriodName ;
+  ?_heritageObject_iri schema:temporalCoverage/schema:name ?artPeriodName ;
     schema:temporalCoverage/schema:startDate ?artPeriodStartDate ;
     schema:temporalCoverage/schema:endDate ?artPeriodEndDate .
 
   # Image
-  ?_genre_iri schema:image/schema:contentUrl ?imageContentUrl ;
+  ?_heritageObject_iri schema:image/schema:contentUrl ?imageContentUrl ;
     schema:image/schema:encodingFormat ?imageEncodingFormat ;
     schema:image/schema:license ?imageLicense . # TBD: also add name of the license?
 
   # Creator
-  ?_genre_iri schema:creator/schema:name ?creatorName .
+  ?_heritageObject_iri schema:creator/schema:name ?creatorName .
 
   # Publisher
-  ?_genre_iri schema:publisher/schema:name ?publisherName .
-  OPTIONAL { ?_genre_iri schema:publisher/schema:mainEntityOfPage ?publisherHomepage }
+  ?_heritageObject_iri schema:publisher/schema:name ?publisherName .
+  OPTIONAL { ?_heritageObject_iri schema:publisher/schema:mainEntityOfPage ?publisherHomepage }
 }

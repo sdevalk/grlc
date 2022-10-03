@@ -10,28 +10,28 @@ PREFIX schema: <https://schema.org/>
 
 SELECT *
 WHERE {
-  BIND(?_heritageObject_iri AS ?heritageObject)
+  BIND(?_heritageObject_iri AS ?test)
 
-  ?heritageObject a schema:VisualArtwork ;
+  ?test a schema:VisualArtwork ;
     schema:name ?name ;
     schema:description ?description ;
     schema:dateCreated ?dateCreated ;
-  OPTIONAL { ?heritageObject schema:mainEntityOfPage ?webpage }
+  OPTIONAL { ?test schema:mainEntityOfPage ?webpage }
 
   # Art period
-  ?heritageObject schema:temporalCoverage/schema:name ?artPeriodName ;
+  ?test schema:temporalCoverage/schema:name ?artPeriodName ;
     schema:temporalCoverage/schema:startDate ?artPeriodStartDate ;
     schema:temporalCoverage/schema:endDate ?artPeriodEndDate .
 
   # Image
-  ?heritageObject schema:image/schema:contentUrl ?imageContentUrl ;
+  ?test schema:image/schema:contentUrl ?imageContentUrl ;
     schema:image/schema:encodingFormat ?imageEncodingFormat ;
     schema:image/schema:license ?imageLicense . # TBD: also add name of the license?
 
   # Creator
-  ?heritageObject schema:creator/schema:name ?creatorName .
+  ?test schema:creator/schema:name ?creatorName .
 
   # Publisher
-  ?heritageObject schema:publisher/schema:name ?publisherName .
-  OPTIONAL { ?heritageObject schema:publisher/schema:mainEntityOfPage ?publisherHomepage }
+  ?test schema:publisher/schema:name ?publisherName .
+  OPTIONAL { ?test schema:publisher/schema:mainEntityOfPage ?publisherHomepage }
 }

@@ -4,7 +4,7 @@
 #+ endpoint_in_url: False
 #+ tags:
 #+   - Heritage Objects
-#+ pagination: 5
+#+ pagination: 50
 
 PREFIX schema: <https://schema.org/>
 

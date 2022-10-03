@@ -1,0 +1,17 @@
+#+ summary: Select all art periods
+#+ description: Select all art periods, assigned to artworks or not
+#+ endpoint: https://api.data.netwerkdigitaalerfgoed.nl/datasets/heritageflix/v1/services/v1/sparql
+#+ tags:
+#+   - artPeriod
+
+PREFIX schema: <https://schema.org/>
+
+SELECT *
+WHERE {
+  ?artPeriod a schema:DefinedTerm ;
+    schema:name ?name .
+  OPTIONAL { ?artPeriod schema:startDate ?startDate }
+  OPTIONAL { ?artPeriod schema:endDate ?endDate }
+}
+ORDER BY ?startDate
+LIMIT 10000

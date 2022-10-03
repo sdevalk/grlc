@@ -1,0 +1,28 @@
+#+ summary: Select all heritage object belonging to a specific art period
+#+ description: Select all heritage object belonging to a specific art period
+#+ endpoint: https://api.data.netwerkdigitaalerfgoed.nl/datasets/heritageflix/v1/services/v1/sparql
+#+ endpoint_in_url: False
+#+ tags:
+#+   - Heritage Objects
+#+ pagination: 5
+
+PREFIX schema: <https://schema.org/>
+
+SELECT *
+WHERE {
+  {
+    SELECT *
+    WHERE {
+      ?heritageObject a schema:VisualArtwork ;
+        schema:name ?name ;
+        schema:dateCreated ?dateCreated ;
+        schema:image/schema:contentUrl ?imageContentUrl ;
+        schema:image/schema:encodingFormat ?imageEncodingFormat ;
+        schema:image/schema:license ?imageLicense ; # TBD: also add name of the license?
+        schema:creator/schema:name ?creatorName ;
+        schema:temporalCoverage <http://vocab.getty.edu/aat/300021147> . # 'Barok'
+    }
+    ORDER BY ?dateCreated
+  }
+}
+LIMIT 1000

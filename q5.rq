@@ -4,6 +4,8 @@
 #+ endpoint_in_url: False
 #+ tags:
 #+   - Heritage Objects
+#+ defaults:
+#+   - artPeriod: http://vocab.getty.edu/aat/300021147
 #+ pagination: 50
 
 PREFIX schema: <https://schema.org/>
@@ -20,9 +22,9 @@ WHERE {
         schema:image/schema:encodingFormat ?imageEncodingFormat ;
         schema:image/schema:license ?imageLicense ; # TBD: also add name of the license?
         schema:creator/schema:name ?creatorName ;
-        schema:temporalCoverage <http://vocab.getty.edu/aat/300021147> . # 'Barok'
+        schema:temporalCoverage ?_artPeriod_iri .
     }
     ORDER BY ?dateCreated
   }
 }
-LIMIT 1000
+LIMIT 10000
